@@ -9,8 +9,8 @@ dotenv.config();
 let port=process.env.PORT ||9870;
 let mongo=require('mongodb')
 let MongoClient= mongo.MongoClient;
-let mongoUrl=process.env.MongoUrl;
-// let MongoLiveUrl =process.env.MongoLiveUrl;
+// let mongoUrl=process.env.MongoUrl;
+let MongoLiveUrl =process.env.MongoLiveUrl;
 let db;
 
 //Middleware (supporting lib)//
@@ -197,7 +197,7 @@ app.delete('/deleteOrder/:id',(req,res) =>{
 //connect with db//
 MongoClient.connect(mongoUrl,(err,client)=>{
     if(err) console.log('error while connecting');
-        db=client.db('EdurInternFeb');
+        db=client.db('febintern');
         app.listen(port,(err)=>{
             if(err) throw err;
             console.log(`Express server listening to port ${port}`)
